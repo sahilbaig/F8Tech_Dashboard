@@ -1,0 +1,36 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="container">
+    <form method="POST" action="">
+        {{form.hidden_tag()}}
+            <div class="form-group ">
+                <div class ="row">
+                    {{form.name.label(class="form-control-label")}}
+                    {{form.name(class="form-control form-control-lg")}}
+                </div>
+
+                <div class ="row">
+                    {{form.salary.label(class="form-control-label")}}
+                    {{form.salary(class="form-control form-control-lg")}}
+                </div>
+
+                
+                
+
+                <div class ="row">
+                    {{form.location.label(class="form-control-label")}}
+                    {{form.location(class="form-control form-control-lg")}}
+                </div>
+                
+
+                <div class="row" style="margin-top: 10px;">
+                {{form.submit(class="btn btn-outline-info")}}
+                </div>
+            </div>
+    </form>
+</div>
+
+
+
+{%endblock%}

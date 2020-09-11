@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>F8 Tech</title>
+  </head>
+  <body>
+    
+  <div class="navbar-fixed orange darken-2">
+    <nav class = "orange darken-2">
+      <div class="nav-wrapper container orange darken-2">
+        <a href="#!" class="brand-logo pull-left align-center"></a>
+        <ul class="left hide-on-med-and-down pull-right">
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{url_for('update')}}">Update</a></li>
+          <li><a href="{{url_for('register')}}">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>  
+    <h4>{%block heading%}
+        {%endblock%}
+    </h4>
+
+     {%block content%}
+     {%endblock%}
+
+    
+  </body>
+</html>
