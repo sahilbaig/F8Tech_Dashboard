@@ -1,21 +1,28 @@
-from flask import Flask , render_template ,redirect , url_for
-from F8Tech.forms import RegistrationForm , UpdateForm
+from flask import Flask , render_template ,redirect , jsonify ,url_for
+from F8Tech.forms import RegistrationForm , UpdateForm , DateForm
 from F8Tech import app ,db 
-from F8Tech.models import User
+from F8Tech.models import User , DatePart 
 from flask_sqlalchemy import SQLAlchemy
 
-@app.route("/")
+@app.route("/date" ,methods=["POST", "GET"])
 def index():
-    return render_template("home.html")
+    form= DateForm()
+    if form.validate_on_submit():
+        user= DatePart(name=form.name.data , salary = form.salary.data , location= form.location.data , dob=form.dob.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('check'))
+    return render_template("home.html" , form =form)
 
 @app.route("/register" ,methods=["POST", "GET"])
 def register():
     form= RegistrationForm()
     if form.validate_on_submit():
+        return redirect(url_for('update'))
         user= User(name=form.name.data , salary = form.salary.data , location= form.location.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('update'))
+        
     return render_template("register.html" , form = form)
 
 @app.route("/update", methods= ["GET"])
@@ -38,6 +45,12 @@ def update_user(user_id):
     form.salary.data = user.salary
     return render_template("update_user.html" , form=form)
 
-@app.route("/date",methods=["GET","POST"])
+@app.route("/",methods=["GET","POST"])
 def date():
-    return render_template("date.html")
+    user= db.session.query(User.salary).all()
+    return render_template("date2.html",user=user)
+
+@app.route("/check",methods=["Get"])
+def check():
+    user=DatePart.query.get(1)
+    return render_template("check.html" , user=user)

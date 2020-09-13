@@ -5,4 +5,10 @@ class User(db.Model):
     name= db.Column(db.String , nullable=False)
     salary= db.Column(db.Integer , nullable= False)
     location= db.Column(db.String , nullable= False)
-    
+
+class DatePart(db.Model):
+    id=db.Column(db.Integer , primary_key=True)
+    name= db.Column(db.String , nullable=False)
+    salary= db.Column(db.Integer , nullable= False)
+    location= db.Column(db.String , nullable= False)
+    dob= db.Column(db.Integer , nullable=False)
