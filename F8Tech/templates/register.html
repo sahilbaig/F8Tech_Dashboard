@@ -1,34 +1,76 @@
 {%extends "layout.html"%}
 
 {%block content%}
-<div class="container">
-    <form method="POST" action="">
-        {{form.hidden_tag()}}
-            <div class="form-group ">
-                <div class ="row">
-                    {{form.name.label(class="form-control")}}
-                    {{form.name(class="form-control form-control-lg")}}
-                </div>
+<div class="container" style="height:360px width: 715px;">
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+                <div class="form-group ">
+                    <div class ="row">
+                        {{form.name.label(class="form-control" ,style="font-size:20px")}}
+                        {{form.name(class="form-control form-control-lg")}}
 
-                <div class ="row">
-                    {{form.salary.label(class="form-control-label")}}
-                    {{form.salary(class="form-control form-control-lg")}}
-                </div>
+                        {% if form.name.errors %}
+                        <ul >
+                            {% for error in form.name.errors %}
+                            <li class="red-text text-darken-3">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                        
+                    </div>
 
+                    <div class ="row">
+                        {{form.salary.label(class="form-control-label" ,style="font-size:20px")}}
+                        {{form.salary(class="form-control form-control-lg")}}
+                        
+                        {% if form.salary.errors %}
+                        <ul >
+                            {% for error in form.salary.errors %}
+                            <li class="red-text text-darken-3">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </div>
+
+                    
+                    
+
+                    <div class ="row">
+                        {{form.location.label(class="form-control-label" ,style="font-size:20px")}}
+                        {{form.location(class="form-control form-control-lg")}}
+
+                        {% if form.location.errors %}
+                        <ul >
+                            {% for error in form.location.errors %}
+                            <li class="red-text text-darken-3">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                        
+                    </div>
+
+                    <div class ="row">
+                        {{form.dob.label(class="form-control-label" ,style="font-size:20px")}}
+                        <!-- <input type="text" class="datepicker"> -->
+                        {{form.dob(class="datepicker")}}
+                    </div>
                 
-                
+                    <script>
+                        const calender = document.querySelector('.datepicker');
+                        M.Datepicker.init(calender,{
+                            format:'yyyy-mm-dd',
+                            yearRange:70,  
+                            // this is that format
+                        });
+                    </script>
+                    
 
-                <div class ="row">
-                    {{form.location.label(class="form-control-label")}}
-                    {{form.location(class="form-control form-control-lg")}}
+                    <div class="row" style="margin-top: 10px;">
+                    {{form.submit(class="btn btn-outline-info")}}
+                    </div>
                 </div>
-                
-
-                <div class="row" style="margin-top: 10px;">
-                {{form.submit(class="btn btn-outline-info")}}
-                </div>
-            </div>
-    </form>
+        </form>
 </div>
 
 

@@ -13,17 +13,20 @@
   </head>
 
   <body>
-      <h1>Just some random Things</h1>
-      {%set new_list=[] %}
+    <div class="container">
+      
+    </div>
+      <!-- {%set new_list=[] %}
          {%for i in user%}
-            {{new_list.append(i.salary)}}
-         {%endfor%}
+            {{new_list.append(user[i])}}
+         {%endfor%} -->
 
         
-      <div class= "container">
-            <div class="chart-container" style="position: relative; height:500px; width:500px">
-                <div class="card-body">
-                     <canvas id="myChart" width="400" height="400"></canvas>
+      <div class= "container" style="height:360px; width:715px">
+        <h5 style="margin-bottom: 40px;">Average Salary across Age </h5>
+            <div class="chart-container" style="height:100px; width:700px">
+                <div class="card">
+                     <canvas id="myChart" width="400px" height="250px"></canvas>
                 </div>
             </div>
         </div>
@@ -37,19 +40,39 @@
 
     // The data for our dataset
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: {{age}},
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: {{new_list}}
+            label: 'Average Salary Per Age Group',
+            backgroundColor: 'rgb(5, 123, 250	)',
+            borderColor: 'rgb(5, 123, 250	)',
+            data: {{user}}
         }]
+        
     },
 
     
 
     // Configuration options go here
-    options: {}
+    // options: {}
+    options : {
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Average Salary'
+      }
+    }],
+
+    xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Age'
+      }
+    }]
+    
+
+  }     
+}
 });
         </script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
